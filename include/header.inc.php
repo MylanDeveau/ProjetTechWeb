@@ -16,8 +16,5 @@
 </head>
 <body>
 <header>
-    <p>HEADER</p>
+  <img id="banniere" src="public/images/banniere.png">
 </header>
-
-	
-
