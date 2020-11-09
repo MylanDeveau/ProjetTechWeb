@@ -32,6 +32,20 @@ class PersonneManager
         $requete->execute();
         return new Personne($requete->fetch(PDO::FETCH_OBJ));
     }
+
+    public function getAllPersonne()
+    {
+        $listePersonne =array();
+        $sql='SELECT id_personne, nom, prenom, depart, mail FROM personne';
+        $req= $this->db->query($sql);
+
+        while ($personne = $req->fetch(PDO::FETCH_OBJ)) {
+              $listePersonne[] = new Personne($personne);
+        }
+
+        return $listePersonne;
+        $req->closeCursor();
+    }
 }
 
 ?>
