@@ -23,26 +23,24 @@ class PersonneManager
         return $requete->execute();
     }
 
-    public function getPersonne($num)
+    public function getRecherche($id_sport, $niveau, $depart)
     {
-        $requete = $this->db->prepare(
-            'SELECT id_personne, nom, prenom, depart, mail
-				FROM personne where id_personne=:num;');
-        $requete->bindValue(':num', $num);
-        $requete->execute();
-        return new Personne($requete->fetch(PDO::FETCH_OBJ));
+        $listePersonne =array();
+        $sql='SELECT p.nom, prenom FROM `personne` p JOIN pratique pr ON p.id_personne = pr.id_personne
+                                                     JOIN sport s ON s.id_sport=pr.id_sport
+        WHERE s.id_sport='.$id_sport.' AND niveau=\''.$niveau.'\'
+        AND depart='.$depart.' AND p.id_personne !='.$_COOKIE['connect'].'
+        GROUP BY p.nom, prenom
+        ORDER BY p.nom';
+        $req= $this->db->query($sql);
+
+        while ($personne = $req->fetch(PDO::FETCH_OBJ)) {
+              $listePersonne[] = new Personne($personne);
+        }
+        $req->closeCursor();
+        return $listePersonne;
     }
 
-    public function getPersonneMail($mail)
-    {
-        $requete = $this->db->prepare(
-            'SELECT id_personne, nom, prenom, depart, mail
-				FROM personne where mail=:mail;');
-        $requete->bindValue(':mail', $mail);
-        $requete->execute();
-        return new Personne($requete->fetch(PDO::FETCH_OBJ));
-
-    }
 
     public function getAllPersonne()
     {
@@ -56,6 +54,26 @@ class PersonneManager
         $req->closeCursor();
         return $listePersonne;
     }
+
+    public function getPersonneMail($mail)
+    {
+      $requete = $this->db->prepare(
+        'SELECT id_personne, nom, prenom, depart, mail
+        FROM personne where mail=:mail;');
+        $requete->bindValue(':mail', $mail);
+        $requete->execute();
+        return new Personne($requete->fetch(PDO::FETCH_OBJ));
+      }
+
+    public function getPersonne($num)
+    {
+        $requete = $this->db->prepare(
+        'SELECT id_personne, nom, prenom, depart, mail
+        FROM personne where id_personne=:num;');
+        $requete->bindValue(':num', $num);
+        $requete->execute();
+        return new Personne($requete->fetch(PDO::FETCH_OBJ));
+      }
 }
 
 ?>

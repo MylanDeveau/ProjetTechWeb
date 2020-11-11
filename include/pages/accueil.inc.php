@@ -5,6 +5,8 @@ $SM = new SportManager($pdo);
 $sports = $SM->getAllSport();
 $PM = new PersonneManager($pdo);
 ?>
+
+<p>Liste des sports disponibles : </p>
 <ul>
     <?php foreach ($sports as $sport) { ?>
         <li><?php echo $sport->getNom(); ?></li>

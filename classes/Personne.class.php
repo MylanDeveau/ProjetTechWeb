@@ -9,7 +9,6 @@ class Personne
     private $departement;
     private $mail;
 
-
     public function __construct($valeurs = array())
     {
         if (!empty($valeurs))
