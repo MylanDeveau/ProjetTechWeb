@@ -37,7 +37,7 @@ $PM = new PersonneManager($pdo);
     ?>
     <p>Bienvenue <?php echo $personne->getPrenom()." ".$personne->getNom(); ?></p>
     <button onclick="window.location.href='/index.php?page=1'">S'inscrire pour un nouveau sport</button>
-    <button onclick="window.location.href='/index.php?page=1'">Faire une recherche</button>
+    <button onclick="window.location.href='/index.php?page=2'">Faire une recherche</button>
     <?php
 }
 ?>

@@ -11,7 +11,7 @@ class PratiqueManager
     {
         $requete = $this->db->prepare(
             'INSERT INTO pratique (id_personne, id_sport, niveau)
-							VALUES (:id_personne, id_sport, :nom);');
+							VALUES (:id_personne, :id_sport, :niveau);');
 
         $requete->bindValue(':id_personne', $pratique->getIdPersonne());
         $requete->bindValue(':id_sport', $pratique->getIdSport());
@@ -28,8 +28,8 @@ class PratiqueManager
         while ($pratique = $req->fetch(PDO::FETCH_OBJ)) {
               $listeNiveau[] = new Pratique($pratique);
         }
-        return $listeNiveau;
         $req->closeCursor();
+        return $listeNiveau;
     }
 
     public function getNiveau($id_personne, $id_sport)
