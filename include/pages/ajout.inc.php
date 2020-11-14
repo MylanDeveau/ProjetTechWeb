@@ -18,7 +18,7 @@ if (!empty($_POST['valider'])) {
                 ?> <p>Le sport a bien été ajouté<br>Redirection automatique dans 2 secondes</p> <?php
                 header("refresh:2;url=index.php?page=1.php");
             } else {
-                ?> <p>Une erreur est survenue le sport n'a pas été ajouté<br>Redirection automatique dans 2 secondes
+                ?> <p>Une erreur est survenue, le sport n'a pas été ajouté<br>Redirection automatique dans 2 secondes
                 </p> <?php
                 header("refresh:2;url=index.php?page=1.php");
             }
@@ -26,16 +26,35 @@ if (!empty($_POST['valider'])) {
         }
     } else {
         $ajout = true;
-        $personne = new Personne(array(
-            'nom' => $_POST['nom'], 'prenom' => $_POST["prenom"], 'depart' => $_POST['departement'], 'mail' => $_POST['mail']
-        ));
-        if ($PersonneManager->add($personne) == 1) {
+        if (!empty($_COOKIE['connect'])) {
             $personne = $PersonneManager->getPersonneMail($_POST['mail']);
             $pratique = new Pratique(array(
                 "id_personne" => $personne->getIdPersonne(), "id_sport" => $_POST['sportPratique'], "niveau" => $_POST['niveau']
             ));
             if ($PratiqueManager->add($pratique) == 1) {
-                ?> <p>Vous etes maintenant inscrit, retournez sur la page d'accueil pour vous connecter</p> <?php
+                ?> <p>Vous etes maintenant inscrit pour un nouveau sport !<br>Redirection automatique dans 2 secondes</p> <?php
+                header("refresh:2;url=index.php?page=1.php");
+            } else{
+                ?> <p>Une erreur est survenue, l'inscription n'a pas été effectué<br>Redirection automatique dans 2 secondes
+                </p> <?php
+                header("refresh:2;url=index.php?page=1.php");
+            }
+        } else {
+            $personne = new Personne(array(
+                'nom' => $_POST['nom'], 'prenom' => $_POST["prenom"], 'depart' => $_POST['departement'], 'mail' => $_POST['mail']
+            ));
+            if ($PersonneManager->add($personne) == 1) {
+                $personne = $PersonneManager->getPersonneMail($_POST['mail']);
+                $pratique = new Pratique(array(
+                    "id_personne" => $personne->getIdPersonne(), "id_sport" => $_POST['sportPratique'], "niveau" => $_POST['niveau']
+                ));
+                if ($PratiqueManager->add($pratique) == 1) {
+                    ?> <p>Vous etes maintenant inscrit, retournez sur la page d'accueil pour vous connecter</p> <?php
+                }
+            }else{
+                ?> <p>Une erreur est survenue, l'inscription n'a pas été effectué<br>Redirection automatique dans 2 secondes
+                </p> <?php
+                header("refresh:2;url=index.php?page=1.php");
             }
         }
     }
@@ -46,7 +65,7 @@ if (!$ajout) {
         <?php if (empty($_COOKIE['connect'])) { ?>
             <label for="nom">Nom:</label><input type="text" name="nom" id="nom" required><br>
             <label for="prenom">Prénom:</label><input type="text" name="prenom" id="prenom" required><br>
-            <label for="departement">Département:</label><input type="text" name="departement" id="departement"
+            <label for="departement">Département:</label><input type="number" name="departement" id="departement"
                                                                 required><br>
             <label for="mail">Mail:</label><input type="mail" name="mail" id="mail" required><br>
         <?php } ?>
