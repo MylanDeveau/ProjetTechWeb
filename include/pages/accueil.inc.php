@@ -25,13 +25,13 @@ $PM = new PersonneManager($pdo);
             <p>Vous n'apparaissez pas dans la base , inscrivez vous avec le lien ci dessous</p>
             <button onclick="window.location.href='/index.php?page=1'">S'inscrire</button>
         <?php } else {
-            setcookie('connect',$personne->getIdPersonne());
+            setcookie('connect',$personne->getIdPersonne(), array("httponly"=>false,"expires"=>time()+360*34*30));
+            header("refresh:0;url=index.php");
             ?>
             <p>Bienvenue <?php echo $personne->getPrenom()." ".$personne->getNom(); ?></p>
             <button onclick="window.location.href='/index.php?page=1'">S'inscrire pour un nouveau sport</button>
             <button onclick="window.location.href='/index.php?page=1'">Faire une recherche</button>
-            <button onclick="document.cookie = 'connect' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';document.location.reload(true);">Se Deconnecter</button>
-
+            <button onclick="document.cookie = 'connect=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.location.reload(true);">Se Deconnecter</button>
         <?php }
     }
 } else {
@@ -40,7 +40,7 @@ $PM = new PersonneManager($pdo);
     <p>Bienvenue <?php echo $personne->getPrenom()." ".$personne->getNom(); ?></p>
     <button onclick="window.location.href='/index.php?page=1'">S'inscrire pour un nouveau sport</button>
     <button onclick="window.location.href='/index.php?page=2'">Faire une recherche</button>
-    <button onclick="document.cookie = 'connect' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';document.location.reload(true);">Se Deconnecter</button>
+    <button onclick="document.cookie = 'connect=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.location.reload(true);">Se Deconnecter</button>
     <?php
 }
 ?>
