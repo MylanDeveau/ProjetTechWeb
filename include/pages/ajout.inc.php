@@ -63,30 +63,33 @@ if (!$ajout) {
     ?>
     <form action="index.php?page=1" method="post">
         <?php if (empty($_COOKIE['connect'])) { ?>
-            <label for="nom">Nom:</label><input type="text" name="nom" id="nom" required><br>
-            <label for="prenom">Prénom:</label><input type="text" name="prenom" id="prenom" required><br>
-            <label for="departement">Département:</label><input type="number" name="departement" id="departement"
+            <h2>Inscription</h2>
+            <label for="nom">Nom : </label><input type="text" name="nom" id="nom" required><br>
+            <label for="prenom">Prénom : </label><input type="text" name="prenom" id="prenom" required><br>
+            <label for="departement">Département : </label><input type="number" name="departement" id="departement"
                                                                 required><br>
-            <label for="mail">Mail:</label><input type="mail" name="mail" id="mail" required><br>
-        <?php } ?>
+            <label for="mail">Mail : </label><input type="mail" name="mail" id="mail" required><br>
+        <?php }else { ?> <h2>Ajouter un nouveau sport pratiqué</h2> <?php } ?>
 
-        <label for="sportPratique">Sport Pratiqué:</label><select name="sportPratique" id="sportPratique">
+        <label for="sportPratique">Sport Pratiqué : </label><select name="sportPratique" id="sportPratique">
             <?php foreach ($sports as $sport) {
                 ?>
                 <option value="<?php echo $sport->getIdSport(); ?>"><?php echo $sport->getNom(); ?></option> <?php
             } ?></select>
-        <label for="nouveauSport">Ajouter un sport a la liste</label><input type="text" name="nouveauSport"
-                                                                            id="nouveauSport"><input type="submit"
-                                                                                                     name="valider"
-                                                                                                     value="Ajouter">
+        <label for="nouveauSport">Ajouter un sport a la liste </label>
+        <input type="text" name="nouveauSport" id="nouveauSport">
+        <input type="submit" name="valider" value="Ajouter">
         <?php if ($erreurNouv) echo "<p>vous devez entrer un nom pour le sport</p>"; ?>
         <br>
-        <label for="niveau">Niveau:</label><select name="niveau" id="niveau">
+        <label for="niveau">Niveau : </label><select name="niveau" id="niveau">
             <?php foreach ($niveaux as $niveau) {
                 ?>
                 <option value="<?php echo $niveau->getNiveau(); ?>"><?php echo $niveau->getNiveau(); ?></option> <?php
             } ?></select>
         <br>
-        <input type="submit" value="Envoyer" name="valider"><input type="reset" value="Effacer">
+        <div id="btnInscription">
+          <input type="submit" value="Envoyer" name="valider"><br>
+          <input type="reset" value="Effacer">
+        </div>
     </form>
 <?php } ?>

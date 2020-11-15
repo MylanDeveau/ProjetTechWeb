@@ -3,9 +3,7 @@
 <html lang="fr">
 
 <head>
-
-    <meta charset="utf-8">
-
+    <meta charset="utf-8"  name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
     $title = "Site Rencontre"; ?>
     <title>
@@ -16,5 +14,5 @@
 </head>
 <body>
 <header>
-  <img id="banniere" src="public/images/banniere.png">
+ <img id="banniere" src="public/images/banniere.png"> 
 </header>

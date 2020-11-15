@@ -1,22 +1,23 @@
-<p>ACCUEIL</p>
 <?php
 $pdo = new Mypdo();
 $SM = new SportManager($pdo);
 $sports = $SM->getAllSport();
 $PM = new PersonneManager($pdo);
 ?>
-
-<p>Liste des sports disponibles : </p>
-<ul>
-    <?php foreach ($sports as $sport) { ?>
-        <li><?php echo $sport->getNom(); ?></li>
-    <?php } ?>
-</ul>
+<div id="acceuil">
+  <h2>ACCUEIL</h2>
+  <p>Liste des sports disponibles : </p>
+  <ul id="ulSport">
+      <?php foreach ($sports as $sport) { ?>
+          <li><?php echo $sport->getNom(); ?></li>
+      <?php } ?>
+  </ul>
 
 <?php if (empty($_COOKIE['connect'])) {
     if (empty($_POST['mail'])) { ?>
-        <form action="index.php?page=0" method="post">
-            <label for="mail">Mail:</label><input id="mail" type="email" name="mail">
+        <form action="index.php?page=0" method="post" id="formConnexion">
+            <h2>Connexion</h2>
+            <label for="mail">Mail : </label><input id="mail" type="mail" name="mail">
             <input type="submit" value="Valider">
         </form><?php
     } else {
@@ -44,3 +45,4 @@ $PM = new PersonneManager($pdo);
     <?php
 }
 ?>
+</div>

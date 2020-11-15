@@ -55,6 +55,20 @@ class PersonneManager
         return $listePersonne;
     }
 
+    public function getDepartement()
+    {
+        $listeDepartement =array();
+        $sql='SELECT DISTINCT depart FROM personne
+              ORDER BY depart';
+        $req= $this->db->query($sql);
+
+        while ($personne = $req->fetch(PDO::FETCH_OBJ)) {
+              $listeDepartement[] = new Personne($personne);
+        }
+        $req->closeCursor();
+        return $listeDepartement;
+    }
+
     public function getPersonneMail($mail)
     {
       $requete = $this->db->prepare(
