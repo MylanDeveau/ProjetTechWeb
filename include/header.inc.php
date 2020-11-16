@@ -14,5 +14,11 @@
 </head>
 <body>
 <header>
- <img id="banniere" src="public/images/banniere.png"> 
+  <div class="header">
+    <h1  id="titreHeader"  >Momentum</h1>
+    <div>
+      <img id="logo"  src="public/images/logo.png">
+      <img id="banniere"  src="public/images/banniere.png">
+    </div>
+  </div>
 </header>

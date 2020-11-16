@@ -1,5 +1,16 @@
 header{
-  height: 165px
+}
+#titreHeader{
+  font-family: Courier New, monospace	;
+  font-size:6vw;
+  margin : 40px 0px;
+  margin-left: 30px;
+}
+
+.header{
+  display: flex;
+  border-bottom: solid white 10px;
+  background-color:#e6f2e9;
 }
 
 body{
@@ -19,8 +30,6 @@ ul{
 
 nav{
     float : left;
-    width: 18%;
-    font-size:15px;
 }
 
 nav ul {
@@ -35,11 +44,17 @@ nav li a {
   color: #000;
   padding: 8px 16px;
   text-decoration: none;
+  margin-left: 50px;
 }
 
 nav li a:hover {
   background-color: #555;
   color: white;
+}
+
+.textNav{
+  width: 15vw;
+  font-size: 2vw;
 }
 
 #corps{
@@ -49,9 +64,9 @@ nav li a:hover {
 }
 
 article{
-  border-left: double grey 5px;
+  border-left: double white 10px;
   min-height: 500px;
-  width: 80%;
+  width: 79%;
 	float:right;
   padding-left: 15px;
   padding-top: 40px;
@@ -72,8 +87,12 @@ footer{
 }
 
 #banniere{
-  width: 40%;
+  width: 80%;
   float: right;
+}
+
+#logo{
+  width: 20%;
 }
 
 
