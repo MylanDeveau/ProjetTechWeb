@@ -32,10 +32,12 @@ if (!empty($_POST['valider'])) {
                 "id_personne" => $personne->getIdPersonne(), "id_sport" => $_POST['sportPratique'], "niveau" => $_POST['niveau']
             ));
             if ($PratiqueManager->add($pratique) == 1) {
-                ?> <p>Vous etes maintenant inscrit pour un nouveau sport !<br>Redirection automatique dans 2 secondes</p> <?php
+                ?> <p>Vous etes maintenant inscrit pour un nouveau sport !<br>Redirection automatique dans 2 secondes
+                </p> <?php
                 header("refresh:2;url=index.php?page=1.php");
-            } else{
-                ?> <p>Une erreur est survenue, l'inscription n'a pas été effectué<br>Redirection automatique dans 2 secondes
+            } else {
+                ?> <p>Une erreur est survenue, l'inscription n'a pas été effectué<br>Redirection automatique dans 2
+                    secondes
                 </p> <?php
                 header("refresh:2;url=index.php?page=1.php");
             }
@@ -51,8 +53,9 @@ if (!empty($_POST['valider'])) {
                 if ($PratiqueManager->add($pratique) == 1) {
                     ?> <p>Vous etes maintenant inscrit, retournez sur la page d'accueil pour vous connecter</p> <?php
                 }
-            }else{
-                ?> <p>Une erreur est survenue, l'inscription n'a pas été effectué<br>Redirection automatique dans 2 secondes
+            } else {
+                ?> <p>Une erreur est survenue, l'inscription n'a pas été effectué<br>Redirection automatique dans 2
+                    secondes
                 </p> <?php
                 header("refresh:2;url=index.php?page=1.php");
             }
@@ -67,9 +70,9 @@ if (!$ajout) {
             <label for="nom">Nom : </label><input type="text" name="nom" id="nom" required><br>
             <label for="prenom">Prénom : </label><input type="text" name="prenom" id="prenom" required><br>
             <label for="departement">Département : </label><input type="number" name="departement" id="departement"
-                                                                required><br>
+                                                                  required><br>
             <label for="mail">Mail : </label><input type="mail" name="mail" id="mail" required><br>
-        <?php }else { ?> <h2>Ajouter un nouveau sport pratiqué</h2> <?php } ?>
+        <?php } else { ?> <h2>Ajouter un nouveau sport pratiqué</h2> <?php } ?>
 
         <label for="sportPratique">Sport Pratiqué : </label><select name="sportPratique" id="sportPratique">
             <?php foreach ($sports as $sport) {
@@ -88,8 +91,8 @@ if (!$ajout) {
             } ?></select>
         <br>
         <div id="btnInscription">
-          <input type="submit" value="Envoyer" name="valider"><br>
-          <input type="reset" value="Effacer">
+            <input type="submit" value="Envoyer" name="valider"><br>
+            <input type="reset" value="Effacer">
         </div>
     </form>
 <?php } ?>

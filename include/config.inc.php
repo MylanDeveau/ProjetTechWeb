@@ -5,7 +5,7 @@ define('DBHOST', "localhost");
 define('DBNAME', "rencontre");
 define('DBUSER', "database");
 define('DBPASSWD', "supersecret");
-define('ENV','dev');
+define('ENV','prod');
 define('SALT','48@!alsd');
 define('DBPORT',3306);
 // pour un environememnt de production remplacer 'dev' (d�veloppement) par 'prod' (production)
