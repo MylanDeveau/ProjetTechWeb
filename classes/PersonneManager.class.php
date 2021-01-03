@@ -26,7 +26,7 @@ class PersonneManager
     public function getRecherche($id_sport, $niveau, $depart)
     {
         $listePersonne =array();
-        $sql='SELECT p.nom, prenom,depart FROM `personne` p JOIN pratique pr ON p.id_personne = pr.id_personne
+        $sql='SELECT p.nom, prenom,depart, mail FROM `personne` p JOIN pratique pr ON p.id_personne = pr.id_personne
                                                      JOIN sport s ON s.id_sport=pr.id_sport
         WHERE s.id_sport='.$id_sport.' AND niveau=\''.$niveau.'\'
         AND depart='.$depart.' AND p.id_personne !='.$_COOKIE['connect'].'

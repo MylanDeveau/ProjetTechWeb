@@ -55,6 +55,7 @@ if (empty($_POST['id_sport'])) {
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Département</th>
+                <th>Mail </th>
             </tr>
             </thead>
             <tbody>
@@ -66,6 +67,7 @@ if (empty($_POST['id_sport'])) {
                     <td> <?php echo $personne->getNom(); ?> </td>
                     <td> <?php echo $personne->getPrenom(); ?> </td>
                     <td> <?php echo $personne->getDepartement(); ?></td>
+                    <td><?php echo $personne->getMail(); ?></td>
                 </tr>
             <?php }
             ?>
